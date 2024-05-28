@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddUser from './components/AddUser';
 import axios from "axios"
 import './App.css';
 
@@ -36,6 +37,7 @@ const App = () => {
         value={searchQuery}
         onChange={(e) => handleSearch(e.target.value)}
       />
+      <AddUser />
       <SearchBooks books={books} />
     </div>
   );
