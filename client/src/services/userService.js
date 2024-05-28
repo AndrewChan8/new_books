@@ -1,7 +1,7 @@
 // services/userService.js
 import axios from 'axios';
 
-const API_URL = '../../api/routes/users';
+const API_URL = 'http://localhost:4000/api/users';
 
 export const getUsers = async () => {
   const response = await axios.get(API_URL);

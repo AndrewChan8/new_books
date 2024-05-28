@@ -5,10 +5,11 @@ import { createUser } from '../services/userService';
 const AddUser = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser = { username, email };
+    const newUser = { username, email, password };
     await createUser(newUser);
   };
 
@@ -28,6 +29,14 @@ const AddUser = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <button type="submit">Add User</button>
