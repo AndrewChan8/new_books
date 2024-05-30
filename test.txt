@@ -1,0 +1,5 @@
+curl -X POST http://localhost:4000/api/bookList/favorite -H "Content-Type: application/json" -d '{"user_id":1,"book_title":"Example Book","book_image":"http://example.com/image.jpg"}'
+
+curl -X POST http://localhost:4000/api/users -H "Content-Type: application/json" -d '{"username":"testuser","email":"test@example.com","password":"password123"}'
+
+curl -X POST http://localhost:4000/api/users/authenticate -H "Content-Type: application/json" -d '{"email":"test@example.com","password":"password123"}'

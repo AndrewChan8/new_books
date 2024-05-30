@@ -9,6 +9,7 @@ import { checkDatabaseConnection } from './db.js'
 import indexRouter from './routes/index.js';
 import booksApi from './routes/booksApi.js';
 import userRoutes from './routes/userRoutes.js';
+import bookRoutes from './routes/bookRoutes.js'
 
 const app = express();
 const port = 4000;
@@ -27,6 +28,7 @@ app.use(express.static(path.join(path.resolve(), 'public')));
 app.use('/', indexRouter);
 app.use('/api/books', booksApi);
 app.use('/api', userRoutes);
+app.use('/api/bookList', bookRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
