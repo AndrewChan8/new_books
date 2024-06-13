@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import AddUser from './components/AddUser';
 import axios from "axios"
-import './App.css';
 
 import SearchBooks from './components/SearchBooks';
+
+import './css/App.css';
+import './css/NavBar.css';
+import './css/Auth.css';
+import './css/SlideShow.css';
+import './css/About.css';
+import './css/SearchBar.css';
+import './css/BookCard.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import NavBar from './components/NavBar'
 
 const App = () => {
   const [books, setBooks] = useState([]);

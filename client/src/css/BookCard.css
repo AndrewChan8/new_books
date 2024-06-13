@@ -1,0 +1,40 @@
+.BookCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+}
+.BookCover {
+    width: 600px !important;   
+    height: 250px;
+    padding: 15px;
+}
+
+.BookAuthor {
+    padding-bottom: .1px !important;
+}
+.BookTitle2, .BookDescription, .BookAuthor {
+    font-family: "Times New Roman", Times, serif !important;
+    padding: 5px 10px;
+}
+
+.BookTitle1 {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 18px;
+    padding: 5px 8px;
+}
+
+.FavoriteIcon {
+    height: 25px;
+}
+
+
+.BookGridContainer {
+   
+    width: 80vw; /* 100vw - 20% (10% margin left and right) */
+    margin: 10vh 10vw; /* 10% margin on each side */
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+  }
+  

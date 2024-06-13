@@ -7,3 +7,8 @@ export const createUser = async (user) => {
   const response = await axios.post(API_URL, user);
   return response.data;
 };
+
+export const authenticateUser = async (credentials) => {
+  const response = await axios.post(`${API_URL}/users/authenticate`, credentials);
+  return response.data;
+};
