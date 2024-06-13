@@ -1,23 +1,22 @@
-import React from 'react';
+import React from "react";
 import Grid from '@mui/material/Grid'; // Import Grid component from Material-UI
 import BookCard from './BookCard'; // Import the BookCard component
 import ExampleCover from '../img/ExampleCover.png';
 
 
-const BookCardGrid = () => {
-  const books = [
-    {id: 1, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description"},
-    {id: 2, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description"},
-    {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
-    {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
-    {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
-    {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
-    {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
-    {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
 
-  ]
+const BookCardGrid = ({ books }) => {
+  // const books = [
+  //   {id: 1, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description"},
+  //   {id: 2, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description"},
+  //   {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
+  //   {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
+  //   {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
+  //   {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
+  //   {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
+  //   {id: 3, title: ' The Labyrinth of Whispers', author: 'Timothy Lengley', coverImage: ExampleCover, description: "Here is a description" },
+  // ]
 
-  books.map(book => console.log(book));
   return (
     <>
      <div className="BookGridContainer">

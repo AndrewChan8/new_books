@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AddUser from './components/AddUser';
 import axios from "axios"
-
-import SearchBooks from './components/SearchBooks';
 
 import './css/App.css';
 import './css/NavBar.css';
@@ -14,10 +11,14 @@ import './css/BookCard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './components/NavBar'
+import ImageCarousel from './components/Carousel'
+import SearchBooks from './components/SearchBooks';
+import SearchIcon from './img/SearchIcon.png';
+import BookCardGrid from "./components/BookCardGrid";
 
 const App = () => {
   const [books, setBooks] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("best sellers");
+  const [searchQuery, setSearchQuery] = useState("Best Sellers");
 
   const handleSearch = (query) => {
     setBooks([]);
@@ -39,16 +40,23 @@ const App = () => {
 
   return (
     <div className="App">
+      <NavBar />
+      <ImageCarousel />
       <header className="App-header">
-        <h1 className="App-title">Book Search</h1>
+        <h1 className="Title">Browse for your favorite books!</h1>
       </header>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => handleSearch(e.target.value)}
-      />
-      <AddUser />
-      <SearchBooks books={books} />
+      <div className="SearchBarContainer">
+          <input
+          className="SearchBar"
+          type="text"
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+          placeholder="Search for a book..."
+        />
+        <img src={ SearchIcon } alt="Search Icon" className="SearchIcon"/>
+      </div>
+      {/* <SearchBooks books={books} /> */}
+      <BookCardGrid books={books}/>
     </div>
   );
 }
