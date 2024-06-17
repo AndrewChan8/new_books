@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userService';
 
 import EmailIcon from "../img/EmailIcon.png";
 import UserIcon from "../img/UserIcon.png";
 import PasswordIcon from "../img/PasswordIcon.png";
 
-const SignUp = ({toggleForm}) => {
+const SignUp = ({ toggleForm }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = { username, email, password };
-    await createUser(newUser);
+    setLoading(true);
+    setError('');
+    try {
+      const response = await createUser(newUser);
+      // Store user information in local storage
+      localStorage.setItem('user', JSON.stringify(response));
+      navigate('/profile');
+    } catch (error) {
+      setError(error.message);
+      console.error('Error creating user:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -51,9 +67,12 @@ const SignUp = ({toggleForm}) => {
               required
             />
           </div>
+          {error && <p className="ErrorMessage">{error}</p>}
           <br />
           <div className="ButtonWrapper">
-            <button type="submit" className="SubmitButton">Add User</button>
+            <button type="submit" className="SubmitButton" disabled={loading}>
+              {loading ? 'Signing Up...' : 'Sign Up'}
+            </button>
           </div>
           <p onClick={toggleForm} className="AuthInfo">Already have an account? Sign in</p>
         </form>

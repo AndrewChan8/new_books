@@ -4,6 +4,6 @@ import { favoriteBook, unfavoriteBook, getFavoriteBooks } from '../controllers/b
 
 router.post('/favorite', favoriteBook);
 router.post('/unfavorite', unfavoriteBook);
-router.get('/:userId/favorites', getFavoriteBooks);
+router.get('/:user_id/favorites', getFavoriteBooks);
 
 export default router;

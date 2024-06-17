@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from '@mui/material/Grid';
-import BookCard from './BookCard';
+import UserBookCard from './UserBookCard';
 
 const BookCardGrid = ({ books }) => {
 
@@ -10,7 +10,7 @@ const BookCardGrid = ({ books }) => {
       <Grid container spacing={1} justifyContent="center" alignItems="center">
         {books.map((book) => (
           <Grid item xs={12} sm={6} md={4} lg={2} key={book.id}>
-            <BookCard book={book} />
+            <UserBookCard book={book} />
           </Grid>
         ))}
       </Grid>

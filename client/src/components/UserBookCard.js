@@ -10,8 +10,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 
-import { favoriteBook } from '../services/bookService'; // Assuming you have a service for book-related API calls
-import Favorite from '../img/Favorite.png';
+import { unfavoriteBook } from '../services/bookService'; // Assuming you have a service for book-related API calls
+import Unfavorite from '../img/Unfavorite.png';
 
 function BookCard({ book }) {
   const [open, setOpen] = useState(false);
@@ -24,7 +24,7 @@ function BookCard({ book }) {
     setOpen(false);
   };
 
-  const handleFavoriteClick = async () => {
+  const handleUnfavoriteClick = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user) {
       console.error('User not logged in');
@@ -34,16 +34,13 @@ function BookCard({ book }) {
     try {
       const bookDetails = {
         user_id: user.id,
-        book_title: book.volumeInfo.title,
-        book_image: book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail,
-        book_description: book.volumeInfo.description,
-        book_authors: book.volumeInfo.authors,
+        book_title: book.book_title,
       };
 
-      await favoriteBook(bookDetails);
-      console.log('Book favorited successfully');
+      await unfavoriteBook(bookDetails);
+      console.log('Book unfavorited successfully');
     } catch (error) {
-      console.error('Error favoriting book:', error);
+      console.error('Error unfavoriting book:', error);
     }
   };
 
@@ -52,23 +49,23 @@ function BookCard({ book }) {
       <Card sx={{ maxWidth: 200 }}>
         <CardMedia
           component="img"
-          alt={book.volumeInfo.title}
+          alt={book.book_title}
           height="250"
-          image={book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail}
+          image={book.book_image}
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div" className="BookTitle1">
-            {book.volumeInfo.title}
+            {book.book_title}
           </Typography>
         </CardContent>
         <CardActions>
           <img
-            src={Favorite}
-            className="FavoriteIcon"
-            onClick={handleFavoriteClick}
-            alt="Favorite Icon"
+            src={Unfavorite}
+            className="UnfavoriteIcon"
+            onClick={handleUnfavoriteClick}
+            alt="Unfavorite Icon"
           />
-          {book.volumeInfo.description && (
+          {book.book_description && (
             <Button size="small" onClick={handleOpen} className="BookCardButton">
               More
             </Button>
@@ -76,10 +73,10 @@ function BookCard({ book }) {
         </CardActions>
       </Card>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle className="BookTitle2">{book.volumeInfo.title}</DialogTitle>
-        {book.volumeInfo.authors && (
+        <DialogTitle className="BookTitle2">{book.book_title}</DialogTitle>
+        {book.book_authors && (
           <DialogContent className="BookAuthor">
-            Author: {book.volumeInfo.authors.join(', ')}
+            Author: {book.book_authors}
           </DialogContent>
         )}
         <DialogContent sx={{ display: 'flex' }}>
@@ -88,9 +85,9 @@ function BookCard({ book }) {
             component="img"
             alt="Book Cover"
             height="140"
-            image={book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail}
+            image={book.book_image}
           />
-          <Typography className="BookDescription">{book.volumeInfo.description}</Typography>
+          <Typography className="BookDescription">{book.book_description}</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus className="CloseBookButton">
