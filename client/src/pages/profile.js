@@ -44,7 +44,7 @@ const Profile = () => {
       <NavBar />
       <div className="ProfileWrapper">
         <h1>Welcome, {user.username}!</h1>
-        <button onClick={handleLogout}>Logout</button>
+        <button className="SubmitButton" onClick={handleLogout}>Logout</button>
       </div>
       <div className="FavoriteBooksWrapper">
         <h2>Your Favorite Books</h2>

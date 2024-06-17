@@ -12,6 +12,7 @@ import DialogActions from '@mui/material/DialogActions';
 
 import { favoriteBook } from '../services/bookService'; // Assuming you have a service for book-related API calls
 import Favorite from '../img/Favorite.png';
+import noCover from '../img/noCover.jpg';
 
 function BookCard({ book }) {
   const [open, setOpen] = useState(false);
@@ -35,7 +36,7 @@ function BookCard({ book }) {
       const bookDetails = {
         user_id: user.id,
         book_title: book.volumeInfo.title,
-        book_image: book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail,
+        book_image: (book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail) || noCover,
         book_description: book.volumeInfo.description,
         book_authors: book.volumeInfo.authors,
       };
@@ -50,12 +51,12 @@ function BookCard({ book }) {
   return (
     <div className="BookCard">
       <Card sx={{ maxWidth: 200 }}>
-        <CardMedia
+        {book.volumeInfo.imageLinks && <CardMedia
           component="img"
           alt={book.volumeInfo.title}
           height="250"
           image={book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail}
-        />
+        />}
         <CardContent>
           <Typography gutterBottom variant="h6" component="div" className="BookTitle1">
             {book.volumeInfo.title}
@@ -83,13 +84,13 @@ function BookCard({ book }) {
           </DialogContent>
         )}
         <DialogContent sx={{ display: 'flex' }}>
-          <CardMedia
+          {book.volumeInfo.imageLinks && <CardMedia
             className="BookCover"
             component="img"
             alt="Book Cover"
             height="140"
             image={book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.smallThumbnail}
-          />
+          />}
           <Typography className="BookDescription">{book.volumeInfo.description}</Typography>
         </DialogContent>
         <DialogActions>

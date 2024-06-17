@@ -19,11 +19,19 @@ li {
 }
 
 a {
-    color: white;
+    color: rgb(39, 3, 3);
     text-decoration: none;
     font-size: 16px;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+img.FavoriteIcon:hover {
+    cursor: pointer;
+}
+
+img.UnfavoriteIcon:hover {
+    cursor: pointer;
 }
